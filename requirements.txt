@@ -1,1 +1,4 @@
 deta
+streamlit_extras
+python-docx
+datetime
