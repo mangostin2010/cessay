@@ -1,5 +1,3 @@
 [theme]
 base="light"
 primaryColor="#bbd8ff"
-[server]
-port = 80
