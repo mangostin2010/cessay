@@ -93,7 +93,7 @@ if submit:
     # 사용자가 모든 빈칸들을 채웠는지 확인
     if st.session_state.name == '':
         st.error('이름을 작성해주세요')
-    elif st.session_state.words <= 150:
+    elif st.session_state.words =< 150:
         st.error('150단어 이상 작성해주세요')
     else:
         # 문서 파일 생성
