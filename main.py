@@ -39,7 +39,7 @@ if topic2:
     st.session_state.topic = st.session_state.random_topic
     st.rerun()
 
-st.session_state.name = st.text_input('이름을 작성해주세요', placeholder='Justin')
+st.session_state.name = st.text_input('이름을 작성해주세요')
 
 st.divider()
 
