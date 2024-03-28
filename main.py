@@ -16,6 +16,7 @@ import pytz
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
+# Time Zone을 서울로 설정
 seoul = pytz.timezone('Asia/Seoul')
 
 # style.css 파일 열고 적용
@@ -29,6 +30,7 @@ if 'key' not in st.session_state:
 
 st.title('Write Your Essay')
 
+# 성품 선택
 CharacterTraits = ['Affectionate', 'Appreciative', 'Attentive', 'Available', 'Blessed', 'Cheerful', 'Committed', 'Compassionate', 'Concerned', 'Confident', 'Considerate', 'Consistent', 'Content', 'Cooperative', 'Courageous', 'Courteous', 'Creative', 'Decisive', 'Deferent', 'Dependable', 'Determined', 'Diligent', 'Discerning', 'Discreet', 'Efficient', 'Equitable', 'Fair', 'Faithful', 'Fearless', 'Flexible', 'Forgiving', 'Friendly', 'Generous', 'Gentle', 'Godly', 'Goodly', 'Gracious', 'Grateful', 'Happy', 'Holy', 'Honest', 'Humble', 'Integrity', 'Joyful', 'Just', 'Kind', 'Knowledgeable', 'Longsuffering', 'Loving', 'Loyal', 'Meek', 'Merciful', 'Modest', 'Obedient', 'Observant', 'Optimistic', 'Orderly', 'Patient', 'Peaceful', 'Perseverant', 'Persuasive', 'Prepared', 'Prudent', 'Punctual', 'Pure', 'Purposeful', 'Ready', 'Rejoiceful', 'Resourceful', 'Respectful', 'Responsible', 'Reverent', 'Righteous', 'Secure', 'Self-Controlled', 'Sincere', 'Steadfast', 'Submissive', 'Tactful', 'Temperate', 'Thorough', 'Thrifty', 'Tolerant', 'Trustworthy', 'Truthful', 'Understanding', 'Virtuous', 'Wise', 'Zealous']
 col1, col2 = st.columns(2)
 with col1: 
@@ -39,18 +41,19 @@ with col2:
     '####'
     topic2 = st.button('랜덤 성품 뽑기')
 
+# 랜덤 성품
 if topic2:
     st.session_state.random_topic = random.randint(0, len(CharacterTraits)-1)
     st.session_state.topic = st.session_state.random_topic
     st.rerun()
 
+# 이름 작성
 st.session_state.name = st.text_input('이름을 작성해주세요')
 
 st.divider()
 
 if 'words' not in st.session_state:
     st.session_state.words = 0
-#f'##### 현재 {st.session_state.words}단어'
 
 st.session_state.content = st.text_area(f'에세이를 작성해주세요', placeholder=f'{st.session_state.topic}에 대하여 영어로 에세이를 작성해보세요', height=300)
 
@@ -92,7 +95,7 @@ with stylable_container(
     submit = st.button("제이크 선생님에게 제출")
 
 today = dt.datetime.now(tz=seoul)
-today
+
 # submit 버튼이 눌렸을 때 실행
 if submit:
     # 사용자가 모든 빈칸들을 채웠는지 확인
@@ -104,7 +107,7 @@ if submit:
         # 문서 파일 생성
         doc = Document()
         doc.add_heading(st.session_state.topic, level=0)
-        today = dt.date.today()
+        today = dt.date.today(tz=seoul)
         doc.add_heading(f'{st.session_state.name}, {today}', level=1)
         doc.add_paragraph(st.session_state.content)
 
