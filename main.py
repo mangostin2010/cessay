@@ -109,7 +109,7 @@ if submit:
         # 문서 파일 생성
         doc = Document()
         doc.add_heading(st.session_state.topic, level=0)
-        today = dt.date.today(tz=seoul)
+        today = dt.datetime.today(tz=seoul)
         doc.add_heading(f'{st.session_state.name}, {today}', level=1)
         doc.add_paragraph(st.session_state.content)
 
