@@ -9,6 +9,8 @@ import random
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.style import WD_STYLE_TYPE
+
+# 시간 정보 라이브러리
 import datetime as dt
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
@@ -86,7 +88,7 @@ with stylable_container(
 ):
     submit = st.button("제이크 선생님에게 제출")
 
-today = dt.datetime.now()
+today = dt.datetime.now(tz=seoul)
 today
 # submit 버튼이 눌렸을 때 실행
 if submit:
