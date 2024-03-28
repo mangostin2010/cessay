@@ -86,7 +86,7 @@ with stylable_container(
 ):
     submit = st.button("제이크 선생님에게 제출")
 
-today = dt.date.now()
+today = dt.datetime.now()
 today
 # submit 버튼이 눌렸을 때 실행
 if submit:
