@@ -98,6 +98,8 @@ today = dt.datetime.now(tz=seoul)
 
 # submit 버튼이 눌렸을 때 실행
 if submit:
+    # 혹시 모르니깐 단어 갯수 확인 ㄱㄱ
+    st.session_state.words = len(st.session_state.content.split())
     # 사용자가 모든 빈칸들을 채웠는지 확인
     if st.session_state.name == '':
         st.error('이름을 작성해주세요')
