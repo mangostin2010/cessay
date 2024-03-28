@@ -12,8 +12,11 @@ from docx.enum.style import WD_STYLE_TYPE
 
 # 시간 정보 라이브러리
 import datetime as dt
+import pytz
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
+
+seoul = pytz.timezone('Asia/Seoul')
 
 # style.css 파일 열고 적용
 with open('style.css', encoding='UTF-8') as f:
