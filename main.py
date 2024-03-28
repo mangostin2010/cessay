@@ -11,7 +11,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.style import WD_STYLE_TYPE
 
 # 시간 정보 라이브러리
-from datetime import date
+from datetime import datetime
 import pytz
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
@@ -109,7 +109,7 @@ if submit:
         # 문서 파일 생성
         doc = Document()
         doc.add_heading(st.session_state.topic, level=0)
-        today = date.today(tz=seoul)
+        today = datetime.now(tz=seoul).date()
         doc.add_heading(f'{st.session_state.name}, {today}', level=1)
         doc.add_paragraph(st.session_state.content)
 
