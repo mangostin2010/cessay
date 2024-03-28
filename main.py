@@ -86,6 +86,8 @@ with stylable_container(
 ):
     submit = st.button("제이크 선생님에게 제출")
 
+today = date.today()
+today
 # submit 버튼이 눌렸을 때 실행
 if submit:
     # 사용자가 모든 빈칸들을 채웠는지 확인
