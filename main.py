@@ -49,8 +49,6 @@ if 'words' not in st.session_state:
 
 st.session_state.content = st.text_area(f'에세이를 작성해주세요', placeholder=f'{st.session_state.topic}에 대하여 영어로 에세이를 작성해보세요', height=300)
 
-
-
 col1, col2, col3 = st.columns(3)
 with col1.popover("작성법", use_container_width=1):
     st.subheader('에세이 작성하는 법')
