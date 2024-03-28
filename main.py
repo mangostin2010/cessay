@@ -9,7 +9,7 @@ import random
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.style import WD_STYLE_TYPE
-from datetime import date
+import datetime as dt
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
@@ -86,7 +86,7 @@ with stylable_container(
 ):
     submit = st.button("제이크 선생님에게 제출")
 
-today = date.today()
+today = dt.date.now()
 today
 # submit 버튼이 눌렸을 때 실행
 if submit:
@@ -99,7 +99,7 @@ if submit:
         # 문서 파일 생성
         doc = Document()
         doc.add_heading(st.session_state.topic, level=0)
-        today = date.today()
+        today = dt.date.today()
         doc.add_heading(f'{st.session_state.name}, {today}', level=1)
         doc.add_paragraph(st.session_state.content)
 
