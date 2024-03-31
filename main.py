@@ -84,7 +84,7 @@ if col2.button('단어 갯수', use_container_width=1):
         ):
             st.write(f"현재 **{st.session_state.words}**단어")
 
-if st.button('Check Grammar'):
+if col3.button('Check Grammar'):
     client = OpenAI(
         api_key="sk-ERbEZ6g35cYPM7DcMylctYXpg92zF60UaaVGMZWfPU1x7dpX",
         base_url="https://api.chatanywhere.cn"
