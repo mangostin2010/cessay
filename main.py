@@ -14,6 +14,9 @@ from docx.enum.style import WD_STYLE_TYPE
 from datetime import datetime
 import pytz
 
+# Grammar Check 라이브러리
+import language_tool_python
+
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
 # Time Zone을 서울로 설정
@@ -94,8 +97,14 @@ with stylable_container(
 ):
     submit = st.button("제이크 선생님에게 제출")
 
-# today = datetime.now(tz=seoul)
-
+if st.button('Check Grammar'):
+    tool = language_tool_python.LanguageTool('en-US')
+    text = "A sentence with a error in the Hitchhiker’s Guide tot he Galaxy"
+    matches = tool.check(text)
+    corrected_text = language_tool_python.utils.correct(text, matches)
+    corrected_text
+    tool.close()
+    
 # submit 버튼이 눌렸을 때 실행
 if submit:
     # 혹시 모르니깐 단어 갯수 확인 ㄱㄱ
