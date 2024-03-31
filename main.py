@@ -14,8 +14,6 @@ from docx.enum.style import WD_STYLE_TYPE
 from datetime import datetime
 import pytz
 
-from openai import OpenAI
-
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
 # Time Zone을 서울로 설정
@@ -83,25 +81,7 @@ if col2.button('단어 갯수', use_container_width=1):
                 """,
         ):
             st.write(f"현재 **{st.session_state.words}**단어")
-
-if col3.button('Check Grammar'):
-    client = OpenAI(
-        api_key="sk-ERbEZ6g35cYPM7DcMylctYXpg92zF60UaaVGMZWfPU1x7dpX",
-        base_url="https://api.chatanywhere.cn"
-    )
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "From now, you are a grammar checker. Check all the errors in the sentence and correct it. Label the changed character with **:blue[]**"},
-            {"role": "user", "content": "i is good at workin computer?"},
-            {"role": "assistant", "content": "**:blue[I]** **:blue[am]** good at **:blue[working]** computer**:blue[.]**"},
-            {"role": "user", "content": st.session_state.content},
-            ],
-    )
-    st.write(response.choices[0].message.content)
     
-
-
 with stylable_container(
     key="green_button",
     css_styles="""
