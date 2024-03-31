@@ -97,7 +97,7 @@ if st.button('Check Grammar'):
             {"role": "user", "content": st.session_state.content},
             ],
     )
-    st.write('response.choices[0].message.content')
+    st.write(response.choices[0].message.content)
     
 
 
