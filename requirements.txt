@@ -4,3 +4,4 @@ python-docx
 datetime
 pytz
 g4f
+curl_cffi
