@@ -16,7 +16,6 @@ import pytz
 
 # g4f 사용하여 Grammar Check
 from g4f.client import Client
-from g4f.Provider import Vercel
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
@@ -87,7 +86,7 @@ if col2.button('단어 갯수', use_container_width=1):
             st.write(f"현재 **{st.session_state.words}**단어")
 
 if st.button('Check Grammar'):
-    client = Client(provider=Vercel)
+    client = Client()
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
