@@ -14,6 +14,9 @@ from docx.enum.style import WD_STYLE_TYPE
 from datetime import datetime
 import pytz
 
+# Grammar Check 라이브러리 임포트
+import grammar_check
+
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
 # Time Zone을 서울로 설정
