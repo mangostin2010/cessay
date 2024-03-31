@@ -14,6 +14,9 @@ from docx.enum.style import WD_STYLE_TYPE
 from datetime import datetime
 import pytz
 
+# g4f 사용하여 Grammar Check
+from g4f.client import Client
+
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
 # Time Zone을 서울로 설정
@@ -81,6 +84,21 @@ if col2.button('단어 갯수', use_container_width=1):
                 """,
         ):
             st.write(f"현재 **{st.session_state.words}**단어")
+
+if st.button('Check Grammar'):
+    client = Client()
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "From now on, you are a grammar checker. Check some errors in the sentence and correct it."},
+            {"role": "user", "content": "i is good at workin computer?"},
+            {"role": "assistant", "content": "I am good at working computer."},
+            {"role": "user", "content": st.session_state.content},
+            ],
+    )
+    st.write('response.choices[0].message.content')
+    
+
 
 with stylable_container(
     key="green_button",
