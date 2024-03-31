@@ -91,7 +91,7 @@ if st.button('Check Grammar'):
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "From now on, you are a grammar checker. Check some errors in the sentence and label the incorrect word with :red[]."},
+            {"role": "system", "content": "From now on, you are a grammar checker. Check some errors in the sentence and label the incorrect word with :red[]"},
             {"role": "user", "content": "i is good at workin computer?"},
             {"role": "assistant", "content": ":red[i] :red[is] good at :red[workin] computer:red[?]"},
             {"role": "user", "content": st.session_state.content},
