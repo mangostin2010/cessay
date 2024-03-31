@@ -4,8 +4,3 @@ python-docx
 datetime
 pytz
 g4f
-curl_cffi
-undetected_chromedriver
-platformdirs
-selenium-wire
-PyExecJS
