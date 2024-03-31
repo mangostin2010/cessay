@@ -91,10 +91,10 @@ if st.button('Check Grammar'):
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "From now on, you are a grammar checker. Check some errors in the sentence and correct it."},
+            {"role": "system", "content": "From now on, you are a grammar checker. Check some errors in the sentence and give some suggestions."},
             {"role": "user", "content": "i is good at workin computer?"},
-            {"role": "assistant", "content": "I am good at working computer."},
-            {"role": "user", "content": st.session_state.content},
+            {"role": "assistant", "content": "Consider changing :red[i] to **I**. \n Consider changing :red[workin] to **working** \n Consider changing the punctuation to **period**"},
+            {"role": "user", "content": "Plesas do ths thing twoday."},
             ],
     )
     st.write(response.choices[0].message.content)
