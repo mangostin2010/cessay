@@ -158,6 +158,9 @@ def check_grammar(text):
 
     return fixed_text
 
+if st.button('Check Grammar'):
+    corrected_text = check_grammar(st.session_state.content)
+    corrected_text
 # --------------------------------------------------
 
 
