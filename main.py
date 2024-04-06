@@ -16,7 +16,23 @@ import pytz
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
-st.info('지금 Cessay는 강예건이 패치중입니다. 에세이 쓰다가 에러날 수 있으니깐 좀 이따가 쓰세요ㅇㅇ')
+if 'ann' not in st.session_state:
+    st.switch_page('pages/get_ann.py')
+
+if st.session_state.ann == None:
+    pass
+
+else:
+    ann = st.session_state.ann
+    content = ann['content']
+    type = ann['type']
+
+    if type == 'Info':
+        st.info(content)
+    elif type == 'Notice':
+        st.warning(content)
+    elif type == 'Warning':
+        st.error(content)
 
 # Time Zone을 서울로 설정
 seoul = pytz.timezone('Asia/Seoul')
