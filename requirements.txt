@@ -6,3 +6,4 @@ pytz
 torch
 spacy
 git+https://github.com/PrithivirajDamodaran/Gramformer.git
+spacy_download
