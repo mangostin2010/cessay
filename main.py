@@ -113,6 +113,7 @@ with grammar_checked:
         if response.status_code == 200:
             result = response.json()
             corrected_text = result.get('corrected_text', '')
+            st.subheader('Grammar-Corrected')
             st.write(corrected_text)
         else:
             st.error('Error:', response.json())
