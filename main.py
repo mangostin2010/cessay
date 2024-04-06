@@ -103,18 +103,19 @@ if col2.button('단어 갯수', use_container_width=1):
         ):
             st.write(f"현재 **{st.session_state.words}**단어")
 
-if st.button('Check Grammar'):
-    url = 'http://121.136.246.248:5000/check_grammar'
-    data = {'text': st.session_state.content}
-    response = requests.post(url, json=data)
-    
-    if response.status_code == 200:
-        result = response.json()
-        corrected_text = result.get('corrected_text', '')
-        with st.expander('Grammar-Checked',expanded=True):
+grammar_checked = st.expander('Grammar-Checked',expanded=True)
+with grammar_checked:
+    if st.button('Check Grammar'):
+        url = 'http://121.136.246.248:5000/check_grammar'
+        data = {'text': st.session_state.content}
+        response = requests.post(url, json=data)
+        
+        if response.status_code == 200:
+            result = response.json()
+            corrected_text = result.get('corrected_text', '')
             st.write(corrected_text)
-    else:
-        st.error('Error:', response.json())
+        else:
+            st.error('Error:', response.json())
         
 with stylable_container(
     key="green_button",
