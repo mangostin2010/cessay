@@ -14,9 +14,8 @@ from docx.enum.style import WD_STYLE_TYPE
 from datetime import datetime
 import pytz
 
-# Grammar Check 라이브러리
+# Grammar Check를 위한 라이브러리
 import requests
-import json
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
@@ -106,29 +105,15 @@ if col2.button('단어 갯수', use_container_width=1):
 
 if st.button('Check Grammar'):
     url = 'http://121.136.246.248:5000/check_grammar'
-    text_to_check = st.session_state.content
+    data = {'text': st.session_state.content}
+    response = requests.post(url, json=data)
     
-    # Data to be sent in the request
-    data = {'text': text_to_check}
-    
-    # Convert data to JSON format
-    json_data = json.dumps(data)
-    
-    # Set the content type as JSON
-    headers = {'Content-type': 'application/json'}
-    
-    # Send POST request
-    response = requests.post(url, data=json_data, headers=headers)
-    
-    # Check if the response status code is okay
     if response.status_code == 200:
-        try:
-            corrected_text = response.json().get('corrected_text', 'Error: No corrected text found')
-            corrected_text
-        except json.decoder.JSONDecodeError:
-            print('Error: Response is not in valid JSON format')
+        result = response.json()
+        corrected_text = result.get('corrected_text', '')
+        st.write(corrected_text)
     else:
-        print(f'Error: {response.text}')
+        st.error('Error:', response.json())
         
 with stylable_container(
     key="green_button",
