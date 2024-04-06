@@ -112,9 +112,28 @@ with grammar_checked:
         
         if response.status_code == 200:
             result = response.json()
+
+            original_text = st.session_state.content
             corrected_text = result.get('corrected_text', '')
+
+            before = []
+            after = []
+
+            for x in original_text.split():
+                before.append(x)
+            for x in corrected_text.split():
+                after.append(x)
+            
+            if len(before) == len(after):
+                for x in range(len(before)):
+                    if before[x] == after[x]:
+                        pass
+                    elif before[x] != after[x]:
+                        asdf = after.index(after[x])
+                        after[asdf] = f"**:blue[{after[x]}]**"
+            
             st.subheader('Grammar-Corrected')
-            st.write(corrected_text)
+            st.write(' '.join(after))
         else:
             st.error('Error:', response.json())
         
