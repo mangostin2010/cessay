@@ -3,3 +3,5 @@ streamlit_extras
 python-docx
 datetime
 pytz
+torch
+spacy
