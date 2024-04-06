@@ -103,7 +103,7 @@ if col2.button('단어 갯수', use_container_width=1):
         ):
             st.write(f"현재 **{st.session_state.words}**단어")
 
-grammar_checked = st.expander('Grammar-Checked',expanded=True)
+grammar_checked = st.expander('Check Your Grammar',expanded=True)
 with grammar_checked:
     if st.button('Check Grammar'):
         url = 'http://121.136.246.248:5000/check_grammar'
