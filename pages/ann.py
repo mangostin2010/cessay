@@ -52,7 +52,7 @@ remove_announce_button = col1.button(':red[공지 삭제하기]', use_container_
 
 if announce_button:
     announce(ann_content, ann_type)
-    st.success('공지가 됐습니다.')
+    st.success('공지 되었습니다.')
 
 if remove_announce_button:
     remove_announce()
