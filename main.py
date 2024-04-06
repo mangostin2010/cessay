@@ -21,7 +21,6 @@ from spacy_download import load_spacy
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
-os.system('python -m spacy download en')
 if 'ann' not in st.session_state:
     st.switch_page('pages/get_ann.py')
 
