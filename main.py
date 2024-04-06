@@ -115,26 +115,9 @@ with grammar_checked:
 
             original_text = st.session_state.content
             corrected_text = result.get('corrected_text', '')
-
-            # ----------------------------------------------------------------
-            def compare_strings(a, b):
-                a_words = a.split()
-                b_words = b.split()
-                result = ""
-                for i in range(min(len(a_words), len(b_words))):
-                    if a_words[i] != b_words[i]:
-                        result += f"**{b_words[i]}** "
-                    else:
-                        result += f"{b_words[i]} "
-                if len(b_words) > len(a_words):
-                    result += f"**{' '.join(b_words[len(a_words):])}**"
-                return result.strip()
-            
-            #print(compare_strings(a, b))
-            # ----------------------------------------------------------------
             
             st.subheader('Grammar-Corrected')
-            st.write(compare_strings(original_text, corrected_text))
+            st.write(corrected_text)
         else:
             st.error('Error:', response.json())
         
