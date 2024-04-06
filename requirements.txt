@@ -3,7 +3,3 @@ streamlit_extras
 python-docx
 datetime
 pytz
-torch
-spacy
-git+https://github.com/PrithivirajDamodaran/Gramformer.git
-spacy_download
