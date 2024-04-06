@@ -116,24 +116,35 @@ with grammar_checked:
             original_text = st.session_state.content
             corrected_text = result.get('corrected_text', '')
 
-            before = []
-            after = []
-
-            for x in original_text.split():
-                before.append(x)
-            for x in corrected_text.split():
-                after.append(x)
+            # ----------------------------------------------------------------
+            def find_difference(str_a, str_b):
+                # Find the index where the strings differ
+                diff_index = -1
+                for i in range(min(len(str_a), len(str_b))):
+                    if str_a[i] != str_b[i]:
+                        diff_index = i
+                        break
             
-            if len(before) == len(after):
-                for x in range(len(before)):
-                    if before[x] == after[x]:
-                        pass
-                    elif before[x] != after[x]:
-                        asdf = after.index(after[x])
-                        after[asdf] = f"**:blue[{after[x]}]**"
+                if diff_index == -1 and len(str_a) != len(str_b):
+                    diff_index = min(len(str_a), len(str_b))
+            
+                return diff_index
+            
+            def highlight_difference(str_a, str_b):
+                diff_index = find_difference(str_a, str_b)
+            
+                if diff_index == -1:
+                    return "No difference found."
+            
+                highlighted_str = f"{str_a[:diff_index]}**{str_a[diff_index:]}**"
+                return highlighted_str
+            
+            highlighted_difference = highlight_difference(original_text, corrected_text)
+            #print(highlighted_difference)
+            # ----------------------------------------------------------------
             
             st.subheader('Grammar-Corrected')
-            st.write(' '.join(after))
+            st.write(highlighted_difference)
         else:
             st.error('Error:', response.json())
         
