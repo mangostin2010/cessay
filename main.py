@@ -1,7 +1,3 @@
-import os
-os.system('pip install -U git+https://github.com/PrithivirajDamodaran/Gramformer.git')
-os.system('python -m spacy download en')
-
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 from streamlit_extras.add_vertical_space import add_vertical_space
