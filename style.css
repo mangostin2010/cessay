@@ -21,3 +21,10 @@ h5 {
     flex: 1 1 calc(33.3333% - 1rem) !important;
     min-width: calc(33% - 1rem) !important;
 }
+
+
+.st-emotion-cache-uf99v8.ea3mdgi8 {
+        *, ::before, ::after {
+      box-sizing: border-box;
+    }
+}
