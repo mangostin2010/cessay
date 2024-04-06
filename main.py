@@ -17,7 +17,7 @@ import pytz
 # Grammar Check 라이브러리
 from gramformer import Gramformer
 import torch
-import os
+from spacy_download import load_spacy
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
@@ -107,6 +107,7 @@ if col2.button('단어 갯수', use_container_width=1):
             st.write(f"현재 **{st.session_state.words}**단어")
 
 if st.button('Check Grammar'):
+    nlp = load_spacy("en_core_web_sm", exclude=["parser", "tagger"])  
     def set_seed(seed):
       torch.manual_seed(seed)
       if torch.cuda.is_available():
