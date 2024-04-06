@@ -1,6 +1,6 @@
+streamlit==1.32.0
 deta
 streamlit_extras
 python-docx
 datetime
 pytz
-openai
