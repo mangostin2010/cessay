@@ -22,9 +22,7 @@ h5 {
     min-width: calc(33% - 1rem) !important;
 }
 
-
-.st-emotion-cache-uf99v8.ea3mdgi8 {
-        *, ::before, ::after {
-      box-sizing: border-box;
-    }
+.st-emotion-cache-gh2jqd {
+  width: 100%;
+  padding: 6rem 0rem 0rem;
 }
