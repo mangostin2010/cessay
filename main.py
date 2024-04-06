@@ -16,7 +16,7 @@ import pytz
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
-st.info('지금 Cessay는 강예건이 개발중입니다. 에세이 쓰다가 에러날 수 있으니깐 좀 이따가 쓰세요ㅇㅇ.')
+st.info('지금 Cessay는 강예건이 개발중입니다. 에세이 쓰다가 에러날 수 있으니깐 좀 이따가 쓰세요ㅇㅇ')
 
 # Time Zone을 서울로 설정
 seoul = pytz.timezone('Asia/Seoul')
