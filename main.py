@@ -111,7 +111,8 @@ if st.button('Check Grammar'):
     if response.status_code == 200:
         result = response.json()
         corrected_text = result.get('corrected_text', '')
-        st.write(corrected_text)
+        with st.expander('Grammar-Checked',expanded=True):
+            st.write(corrected_text)
     else:
         st.error('Error:', response.json())
         
