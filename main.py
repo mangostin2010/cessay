@@ -117,34 +117,24 @@ with grammar_checked:
             corrected_text = result.get('corrected_text', '')
 
             # ----------------------------------------------------------------
-            def find_difference(str_a, str_b):
-                # Find the index where the strings differ
-                diff_index = -1
-                for i in range(min(len(str_a), len(str_b))):
-                    if str_a[i] != str_b[i]:
-                        diff_index = i
-                        break
+            def compare_strings(a, b):
+                a_words = a.split()
+                b_words = b.split()
+                result = ""
+                for i in range(min(len(a_words), len(b_words))):
+                    if a_words[i] != b_words[i]:
+                        result += f"**{b_words[i]}** "
+                    else:
+                        result += f"{b_words[i]} "
+                if len(b_words) > len(a_words):
+                    result += f"**{' '.join(b_words[len(a_words):])}**"
+                return result.strip()
             
-                if diff_index == -1 and len(str_a) != len(str_b):
-                    diff_index = min(len(str_a), len(str_b))
-            
-                return diff_index
-            
-            def highlight_difference(str_a, str_b):
-                diff_index = find_difference(str_a, str_b)
-            
-                if diff_index == -1:
-                    return "No difference found."
-            
-                highlighted_str = f"{str_a[:diff_index]}**{str_a[diff_index:]}**"
-                return highlighted_str
-            
-            highlighted_difference = highlight_difference(original_text, corrected_text)
-            #print(highlighted_difference)
+            #print(compare_strings(a, b))
             # ----------------------------------------------------------------
             
             st.subheader('Grammar-Corrected')
-            st.write(highlighted_difference)
+            st.write(compare_strings(original_text, corrected_text))
         else:
             st.error('Error:', response.json())
         
