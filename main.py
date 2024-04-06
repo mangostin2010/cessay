@@ -14,6 +14,10 @@ from docx.enum.style import WD_STYLE_TYPE
 from datetime import datetime
 import pytz
 
+# Grammar Check 라이브러리
+from gramformer import Gramformer
+import torch
+
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
 if 'ann' not in st.session_state:
@@ -99,6 +103,16 @@ if col2.button('단어 갯수', use_container_width=1):
                 """,
         ):
             st.write(f"현재 **{st.session_state.words}**단어")
+
+if st.button('Check Grammar'):
+    def set_seed(seed):
+      torch.manual_seed(seed)
+      if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+    set_seed(1212)
+    gf = Gramformer(models = 1, use_gpu=False)
+    st.write(gf.correct(st.session_state.content, max_candidates=1))
     
 with stylable_container(
     key="green_button",
