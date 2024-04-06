@@ -17,9 +17,11 @@ import pytz
 # Grammar Check 라이브러리
 from gramformer import Gramformer
 import torch
+import os
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️')
 
+os.system('python -m spacy download en')
 if 'ann' not in st.session_state:
     st.switch_page('pages/get_ann.py')
 
