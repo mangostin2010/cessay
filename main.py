@@ -17,7 +17,7 @@ import pytz
 # Grammar Check를 위한 라이브러리
 import requests
 
-st.set_page_config(page_title='Write Your Essay', page_icon='✏️', layout="wide")
+st.set_page_config(page_title='Write Your Essay', page_icon='✏️', layout="collapsed")
 
 if 'ann' not in st.session_state:
     st.switch_page('pages/get_ann.py')
