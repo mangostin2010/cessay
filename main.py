@@ -179,6 +179,6 @@ code = """
         padding-left: 17rem;
         padding-right: 17rem;
     }
-<style>
+</style>
 """
 st.html(code)
