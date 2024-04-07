@@ -29,8 +29,7 @@ h5 {
 
 @media screen and (max-width: 420px) {
     body {
-        margin-left: 1rem;
-        margin-right: 1rem;
-        background: red;
+        margin-left: 10rem;
+        margin-right: 10rem;
     }
 }
