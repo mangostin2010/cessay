@@ -101,25 +101,29 @@ if col2.button('단어 갯수', use_container_width=1):
         ):
             st.write(f"현재 **{st.session_state.words}**단어")
 
+# Grammar Checking
+# ----------------------------------------------------------------------------------------
 grammar_checked = st.expander('Check Your Grammar',expanded=False)
 with grammar_checked:
     st.warning('⚠️ Grammar-Checker는 아직 개발중이므로 안정적이지 않을 수 있습니다.')
     if st.button('Check Grammar'):
-        url = 'http://121.136.246.248:5000/check_grammar'
-        data = {'text': st.session_state.content}
-        response = requests.post(url, json=data)
-        
-        if response.status_code == 200:
-            result = response.json()
-
-            original_text = st.session_state.content
-            corrected_text = result.get('corrected_text', '')
+        with st.spinner('Wait for it...'):
+            url = 'http://121.136.246.248:5000/check_grammar'
+            data = {'text': st.session_state.content}
+            response = requests.post(url, json=data)
             
-            st.subheader('Grammar-Corrected')
-            st.write(corrected_text)
-        else:
-            st.error('Error:', response.json())
-        
+            if response.status_code == 200:
+                result = response.json()
+    
+                original_text = st.session_state.content
+                corrected_text = result.get('corrected_text', '')
+                
+                st.subheader('Grammar-Corrected')
+                st.write(corrected_text)
+            else:
+                st.error('Error:', response.json())
+# ----------------------------------------------------------------------------------------
+
 with stylable_container(
     key="green_button",
     css_styles="""
