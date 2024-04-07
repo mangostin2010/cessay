@@ -117,11 +117,12 @@ with grammar_checked:
     
                 original_text = st.session_state.content
                 corrected_text = result.get('corrected_text', '')
+                st.session_state.correct = corrected_text
                 
-                st.subheader('Grammar-Corrected')
-                st.write(corrected_text)
-            else:
-                st.error('Error:', response.json())
+            st.subheader('Grammar-Corrected')
+            st.write(st.session_state.correct)
+        else:
+            st.error('Error:', response.json())
 # ----------------------------------------------------------------------------------------
 
 with stylable_container(
