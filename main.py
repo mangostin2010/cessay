@@ -110,17 +110,17 @@ with grammar_checked:
         with st.spinner('Wait for it...'):
             url = 'http://121.136.246.248:5000/check_grammar'
             data = {'text': st.session_state.content}
+            global response
             response = requests.post(url, json=data)
             
-            if response.status_code == 200:
-                result = response.json()
-    
-                original_text = st.session_state.content
-                corrected_text = result.get('corrected_text', '')
-                st.session_state.correct = corrected_text
+        if response.status_code == 200:
+            result = response.json()
+
+            original_text = st.session_state.content
+            corrected_text = result.get('corrected_text', '')
                 
             st.subheader('Grammar-Corrected')
-            st.write(st.session_state.correct)
+            st.write(corrected_text)
         else:
             st.error('Error:', response.json())
 # ----------------------------------------------------------------------------------------
