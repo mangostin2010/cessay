@@ -17,7 +17,7 @@ import pytz
 # Grammar Check를 위한 라이브러리
 import requests
 
-st.set_page_config(page_title='Write Your Essay', page_icon='✏️', layout="wide")
+st.set_page_config(page_title='Write Your Essay', page_icon='✏️', layout="centered")
 
 if 'ann' not in st.session_state:
     st.switch_page('pages/get_ann.py')
@@ -171,14 +171,3 @@ if submit:
         with st.spinner('업로드 중...'):
             upload_file(file_stream)
         st.success('제이크 선생님에게 제출되었습니다!')
-
-code = """
-<style>
-    @media (min-width: 576px)
-    .st-emotion-cache-z5fcl4 {
-        padding-left: 17rem;
-        padding-right: 17rem;
-    }
-</style>
-"""
-st.html(code)
