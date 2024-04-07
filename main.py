@@ -19,23 +19,26 @@ import requests
 
 st.set_page_config(page_title='Write Your Essay', page_icon='✏️', layout="centered")
 
-if 'ann' not in st.session_state:
-    st.switch_page('pages/get_ann.py')
+def get_announcements():
+    if 'ann' not in st.session_state:
+        st.switch_page('pages/get_ann.py')
 
-if st.session_state.ann == None:
-    pass
+    if st.session_state.ann == None:
+        pass
 
-else:
-    ann = st.session_state.ann
-    content = ann['content']
-    type = ann['type']
+    else:
+        ann = st.session_state.ann
+        content = ann['content']
+        type = ann['type']
 
-    if type == 'Info':
-        st.info(content)
-    elif type == 'Notice':
-        st.warning(content)
-    elif type == 'Warning':
-        st.error(content)
+        if type == 'Info':
+            st.info(content)
+        elif type == 'Notice':
+            st.warning(content)
+        elif type == 'Warning':
+            st.error(content)
+
+get_announcements()
 
 # Time Zone을 서울로 설정
 seoul = pytz.timezone('Asia/Seoul')
@@ -43,11 +46,6 @@ seoul = pytz.timezone('Asia/Seoul')
 # style.css 파일 열고 적용
 with open('style.css', encoding='UTF-8') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
-# 사용자의 고유 아이디
-if 'key' not in st.session_state:
-    st.session_state['key'] = random.randint(1,100000000000000)
-
 
 st.title('Write Your Essay')
 
