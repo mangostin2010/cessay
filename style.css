@@ -27,9 +27,10 @@ h5 {
   padding: 6rem 0rem 5rem;
 }
 
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
     body {
         margin-left: 10rem;
         margin-right: 10rem;
+        background: red;
     }
 }
