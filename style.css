@@ -27,8 +27,8 @@ h5 {
   padding: 6rem 0rem 5rem;
 }
 
-@media (min-width: 600px)
+@media (min-width: 576px)
 .st-emotion-cache-z5fcl4 {
-    padding-left: 15rem;
-    padding-right: 15rem;
+    padding-left: 17rem;
+    padding-right: 17rem;
 }
