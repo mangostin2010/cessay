@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
 from deta import Deta
 
-st.set_page_config(page_title='announce', layout='centered')
+st.set_page_config(page_title='Announce', layout='centered', page_icon='📢')
 # style.css 파일 열고 적용
 with open('style.css', encoding='UTF-8') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
