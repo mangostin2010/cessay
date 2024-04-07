@@ -17,4 +17,8 @@ Cessay 웹 서비스는 여러가지 기능들이 있습니다.
 - Announce📢
 
 ## What is Announce📢?
-Cessay에 있는 announce 기능을 사용하여 Cessay를 사용하는 모든 사용자에게 공지를 할 수 있습니다. Announce페이지는 pages/ann.py에 위치해 있으며, 관리자는 3가지 형식인 Info, Notice, Warning 형식으로 공지를 할 수 있습니다. Announce하려는 데이터는 deta.space 데이터베이스에 업로드 됩니다. 사용자가 cessay를 방문하였을때 만약 공지 데이터가 없다면 pages/get_ann.py로 이동하게 됩니다. pages/get_ann.py페이지에서 사용자는 deta.space에서 공지 내용을 받게 되고 그 다음에 원래 페이지인 main.py로 이동하게 됩니다. 그러면 사용자는 공지 내용을 받을 수 있게 됩니다.
+- Cessay에 있는 announce 기능을 사용하여 Cessay를 사용하는 모든 사용자에게 공지를 할 수 있습니다.
+- Announce페이지는 pages/ann.py에 위치해 있으며, 관리자는 3가지 형식인 Info, Notice, Warning 형식으로 공지를 할 수 있습니다.
+- Announce하려는 데이터는 deta.space 데이터베이스에 업로드 됩니다.
+  - 사용자가 cessay를 방문하였을때 만약 공지 데이터가 없다면 pages/get_ann.py로 이동하게 됩니다.
+    - pages/get_ann.py페이지에서 사용자는 deta.space에서 공지 내용을 받게 되고 그 다음에 원래 페이지인 main.py로 이동하게 됩니다. 그러면 사용자는 공지 내용을 받을 수 있게 됩니다.
