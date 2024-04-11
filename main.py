@@ -106,23 +106,26 @@ if col2.button('단어 갯수', use_container_width=1):
 grammar_checked = st.expander('Check Your Grammar',expanded=False)
 with grammar_checked:
     st.warning('⚠️ Grammar-Checker는 아직 개발중이므로 안정적이지 않을 수 있습니다.')
-    if st.button('Check Grammar'):
-        with st.spinner('Wait for it...'):
-            url = 'http://121.136.246.248:5000/check_grammar'
-            data = {'text': st.session_state.content}
-            global response
-            response = requests.post(url, json=data)
-            
-        if response.status_code == 200:
-            result = response.json()
-
-            original_text = st.session_state.content
-            corrected_text = result.get('corrected_text', '')
+    try:
+        if st.button('Check Grammar'):
+            with st.spinner('Wait for it...'):
+                url = 'http://121.136.246.248:5000/check_grammar'
+                data = {'text': st.session_state.content}
+                global response
+                response = requests.post(url, json=data)
                 
-            st.subheader('Grammar-Corrected')
-            st.write(corrected_text)
-        else:
-            st.error('Error:', response.json())
+            if response.status_code == 200:
+                result = response.json()
+    
+                original_text = st.session_state.content
+                corrected_text = result.get('corrected_text', '')
+                    
+                st.subheader('Grammar-Corrected')
+                st.write(corrected_text)
+            else:
+                st.error('Error:', response.json())
+    except:
+        st.error('현재 Grammar Checker는 작동하지 않습니다. 나중에 다시 사용하여 주세요.')
 # ----------------------------------------------------------------------------------------
 
 with stylable_container(
