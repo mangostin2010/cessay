@@ -23,10 +23,7 @@ def get_announcements():
     if 'ann' not in st.session_state:
         st.switch_page('pages/get_ann.py')
 
-    if st.session_state.ann == None:
-        pass
-
-    else:
+    if st.session_state.ann != None:
         ann = st.session_state.ann
         content = ann['content']
         type = ann['type']
