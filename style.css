@@ -32,3 +32,8 @@ h5 {
     max-width: calc(-2.5rem + 100vw);
   }
 }
+
+
+button:hover {
+    color:red;
+}
