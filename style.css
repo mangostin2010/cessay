@@ -27,12 +27,17 @@ h5 {
   padding: 6rem 0rem 5rem;
 }
 
-@media (max-width: 50.5rem) {
+@media (max-width: 808px) {
   .st-emotion-cache-gh2jqd {
     max-width: calc(-2.5rem + 100vw);
   }
 }
 
+@media (max-width: 50.5rem) {
+  .st-emotion-cache-13ln4jf {
+    max-width: unset
+  }
+}
 .st-emotion-cache-eczf16 {
     display: none;
 }
