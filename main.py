@@ -107,31 +107,42 @@ if col2.button('단어 갯수', use_container_width=1):
         ):
             st.write(f"현재 **{st.session_state.words}**단어")
 
+url = 'http://121.136.246.248:5000/check_grammar'
+data = {'text': 'is_online'}
+try:
+    is_online = requests.post(url, json=data)
+    if is_online.status_code == 200:
+        result = is_online.json()
+        status = result.get('corrected_text', '')
+except:
+    status = False
+
 # Grammar Checking
-# ----------------------------------------------------------------------------------------
-grammar_checked = st.expander('Check Your Grammar',expanded=False)
-with grammar_checked:
-    st.warning('⚠️ Grammar-Checker는 아직 개발중이므로 안정적이지 않을 수 있습니다.')
-    try:
-        if st.button('Check Grammar'):
-            with st.spinner('Wait for it...'):
-                url = 'http://121.136.246.248:5000/check_grammar'
-                data = {'text': st.session_state.content}
-                global response
-                response = requests.post(url, json=data)
-                
-            if response.status_code == 200:
-                result = response.json()
-    
-                original_text = st.session_state.content
-                corrected_text = result.get('corrected_text', '')
+# ----------------------------------------------------------------------------------------=
+
+if status == True:
+    grammar_checked = st.expander('Check Your Grammar',expanded=False)
+    with grammar_checked:
+        try:
+            if st.button('Check Grammar'):
+                with st.spinner('Wait for it...'):
+                    url = 'http://121.136.246.248:5000/check_grammar'
+                    data = {'text': st.session_state.content}
+                    global response
+                    response = requests.post(url, json=data)
                     
-                st.subheader('Grammar-Corrected')
-                st.write(corrected_text)
-            else:
-                st.error('Error:', response.json())
-    except:
-        st.error('현재 Grammar Checker는 작동하지 않습니다. 나중에 다시 사용하여 주세요.')
+                if response.status_code == 200:
+                    result = response.json()
+        
+                    original_text = st.session_state.content
+                    corrected_text = result.get('corrected_text', '')
+                        
+                    st.subheader('Grammar-Corrected')
+                    st.write(corrected_text)
+                else:
+                    st.error('Error:', response.json())
+        except Exception as e:
+            st.error('현재 Grammar Checker는 작동하지 않습니다. 나중에 다시 사용하여 주세요.')
 # ----------------------------------------------------------------------------------------
 
 with stylable_container(
@@ -184,3 +195,11 @@ if submit:
         with st.spinner('업로드 중...'):
             upload_file(file_stream)
         st.success('제이크 선생님에게 제출되었습니다!')
+
+
+hide_menu_style = """
+    <style>
+    [data-testid="InputInstructions"] { display:None }
+    </style>
+    """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
