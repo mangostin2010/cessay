@@ -37,15 +37,6 @@ def get_announcements():
 
 get_announcements()
 
-code = """
-<script>
-window.onbeforeunload = function(){
-    return "Are you sure you want to close the window?";
-}
-</script>
-"""
-st.html(code)
-
 # Time Zone을 서울로 설정
 seoul = pytz.timezone('Asia/Seoul')
 
