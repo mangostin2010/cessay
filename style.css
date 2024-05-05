@@ -41,3 +41,20 @@ h5 {
 .st-emotion-cache-eczf16 {
     display: none;
 }
+
+a {
+    color: rgb(49, 51, 63) !important;
+    min-height: 38.4px;
+    padding: 0.25rem 0.75rem;
+    background-color: white;
+    transition: box-shadow .15s,transform .15s;
+    border: 1px solid rgba(49, 51, 63, 0.2); 
+    border-radius: 0.5rem;
+}
+
+a:hover {
+    transform: translateY(-2px);
+    background: #eaeaea;
+    border-color: rgb(75, 157, 255);
+    color: rgb(75, 157, 255) !important;
+}
