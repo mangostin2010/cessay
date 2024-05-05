@@ -192,5 +192,10 @@ hide_menu_style = """
     <style>
     [data-testid="InputInstructions"] { display:None }
     </style>
+    <script>
+    window.onbeforeunload = function(){
+      return 'Are you sure you want to leave?';
+    };
+    </script>
     """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
